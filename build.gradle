@@ -1,0 +1,129 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.2'
+    id 'io.spring.dependency-management' version '1.1.2'
+}
+
+ext {
+    set('springCloudVersion', "2022.0.4")
+}
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'io.malachai.web.tagmanager'
+    version = '0.0.1-SNAPSHOT'
+
+    java {
+        sourceCompatibility = '17'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        annotationProcessor 'org.projectlombok:lombok'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+project(':core') {
+    dependencies {
+
+    }
+    jar {
+        enabled = false
+    }
+    bootJar {
+        enabled = false
+    }
+}
+
+project(':common') {
+    dependencies {
+
+    }
+    jar {
+        enabled = true
+    }
+    bootJar {
+        enabled = false
+    }
+}
+
+project(':browser') {
+    dependencies {
+        implementation project(':core')
+        implementation project(':common')
+    }
+    jar {
+        enabled = true
+    }
+    bootJar {
+        manifest {
+            attributes 'Start-Class': 'io.malachai.web.tagmanager.browser.BrowserApplication'
+        }
+    }
+}
+
+project(':config-server') {
+    dependencies {
+        implementation project(':core')
+        implementation project(':common')
+    }
+    jar {
+        enabled = true
+    }
+    bootJar {
+        manifest {
+            attributes 'Start-Class': 'io.malachai.web.tagmanager.configserver.ConfigServerApplication'
+        }
+    }
+}
+
+project(':discovery-server') {
+    dependencies {
+        implementation project(':core')
+        implementation project(':common')
+    }
+    jar {
+        enabled = true
+    }
+    bootJar {
+        manifest {
+            attributes 'Start-Class': 'io.malachai.web.tagmanager.discoveryserver.DiscoveryServerApplication'
+        }
+    }
+}
+bootJar {
+    enabled = false
+}
+jar {
+    enabled = false
+}
