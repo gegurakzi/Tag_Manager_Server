@@ -7,6 +7,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/gegurakzi/Spring_Cloud_Basics
+          uri: https://github.com/gegurakzi/Tag_Manager_Server
           searchPaths: config
-          default-label: feature/malachai/user-service-init
+          default-label: main
