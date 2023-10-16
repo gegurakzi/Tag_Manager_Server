@@ -1,4 +1,5 @@
 rootProject.name = 'tag-manager-server'
 include 'core', 'common'
 include 'browser'
+include 'dump'
 include 'config-server', 'discovery-server'

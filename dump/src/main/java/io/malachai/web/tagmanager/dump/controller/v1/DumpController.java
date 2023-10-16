@@ -1,6 +1,5 @@
-package io.malachai.web.tagmanager.browser.controller.v1;
+package io.malachai.web.tagmanager.dump.controller.v1;
 
-import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.configurationprocessor.json.JSONTokener;

@@ -92,6 +92,21 @@ project(':browser') {
     }
 }
 
+project(':dump') {
+    dependencies {
+        implementation project(':core')
+        implementation project(':common')
+    }
+    jar {
+        enabled = true
+    }
+    bootJar {
+        manifest {
+            attributes 'Start-Class': 'io.malachai.web.tagmanager.dump.DumpApplication'
+        }
+    }
+}
+
 project(':config-server') {
     dependencies {
         implementation project(':core')
