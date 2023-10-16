@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: dump
+  profiles:
+    active: dev
+  config:
+    import: configserver:http://localhost:8888

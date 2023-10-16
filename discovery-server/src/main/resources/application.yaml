@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: discovery
+  profiles:
+    active: dev
+  config:
+    import: configserver:http://localhost:8888
+eureka:
+  client:
+    register-with-eureka: true #eureka server? registry? ???? ??
+    fetch-registry: true       #registry? ?? ???? ???? ??
