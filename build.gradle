@@ -36,6 +36,7 @@ subprojects {
 
     dependencyManagement {
         imports {
+            mavenBom "org.springframework.data:spring-data-bom:${springCloudVersion}"
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
     }
@@ -103,6 +104,36 @@ project(':dump') {
     bootJar {
         manifest {
             attributes 'Start-Class': 'io.malachai.web.tagmanager.dump.DumpApplication'
+        }
+    }
+}
+
+project(':member') {
+    dependencies {
+        implementation project(':core')
+        implementation project(':common')
+    }
+    jar {
+        enabled = true
+    }
+    bootJar {
+        manifest {
+            attributes 'Start-Class': 'io.malachai.web.tagmanager.member.MemberApplication'
+        }
+    }
+}
+
+project(':project') {
+    dependencies {
+        implementation project(':core')
+        implementation project(':common')
+    }
+    jar {
+        enabled = true
+    }
+    bootJar {
+        manifest {
+            attributes 'Start-Class': 'io.malachai.web.tagmanager.project.ProjectApplication'
         }
     }
 }

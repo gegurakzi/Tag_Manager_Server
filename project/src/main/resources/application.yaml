@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: project
+  profiles:
+    active: dev
+  config:
+    import: configserver:http://localhost:8888
+
+  jpa:
+    database: mysql
+    show-sql: on
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:mysql://localhost:3306/web
+    username: web
+    password: web

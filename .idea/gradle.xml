@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -13,6 +14,9 @@
             <option value="$PROJECT_DIR$/config-server" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/discovery-server" />
+            <option value="$PROJECT_DIR$/dump" />
+            <option value="$PROJECT_DIR$/member" />
+            <option value="$PROJECT_DIR$/project" />
           </set>
         </option>
       </GradleProjectSettings>
